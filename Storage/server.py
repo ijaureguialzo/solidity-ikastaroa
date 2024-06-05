@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder='www', static_url_path='/static')
 contract_addr = "XXXXX" #CAMBIA ESTE VALOR POR EL ADDRESS DE TU CONTRATO
 
 #Cadena de conexión con Ganache
-provider = "http://127.0.0.1:7545"
+provider = "http://127.0.0.1:7545" #REVISA QUE EL PUERTO DE CONEXIÓN A GANACHE ES CORRECTO
 
 #Guardamos en una variable abi, el abi del contrato
 with open("static/abi/Storage.abi", "r") as f:
