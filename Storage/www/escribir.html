@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <title>Blockchain FP Euskadi</title>
-<!--    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>-->
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -36,18 +35,7 @@
        <input type="hidden" id="addr" name="addr" value="" />
        Número a escribir (0-100): <input type="number" name="num" min="0" max="100">
        <button type="submit">Enviar</button>
-<!--       <button type="submit" id="connect" onclick="Connect()">Enviar</button>-->
     </form>
     <p><a href="/">Volver</a></p>
-<!--    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
-    <script>
-        async function Connect(){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send("eth_requestAccounts",[]);
-            const address = await provider.getSigner().getAddress();
-            document.getElementById("addr").value = address;
-            document.getElementById("form").submit();
-        }
-    </script>-->
 </body>
 </html>
