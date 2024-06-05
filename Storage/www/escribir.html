@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Blockchain FP Euskadi</title>
+<!--    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>-->
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof window.ethereum !== 'undefined') {
+                console.log('MetaMask is installed!');
+
+                document.getElementById('formu').addEventListener('submit', async function(event) {
+                    event.preventDefault(); // Evita que el formulario se envíe inmediatamente
+                    
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    if (accounts.length > 0) {
+                        console.log('Connected account:', accounts[0]);
+                        // Aquí puedes realizar acciones adicionales con la cuenta seleccionada
+                        document.getElementById("addr").value = accounts[0];
+                        // Ahora puedes enviar el formulario
+                        event.target.submit();
+                    } else {
+                        alert('Por favor, selecciona una cuenta en MetaMask.');
+                    }
+                });
+            } else {
+                alert('MetaMask no está instalado. Por favor, instálalo para continuar.');
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Escribir un valor en el contrato</h1>
+    <p>Para escribir un valor en el contrato en la llamada a la función Store, le tenemos que decir desde que address se ha hecho la llamada ya que esta información se guarda en el bloque para así poder auditar quién hace cada cambio en el contrato.</p>
+    <form id="formu" action="" method="post">
+       <input type="hidden" id="addr" name="addr" value="" />
+       Número a escribir (0-100): <input type="number" name="num" min="0" max="100">
+       <button type="submit">Enviar</button>
+<!--       <button type="submit" id="connect" onclick="Connect()">Enviar</button>-->
+    </form>
+    <p><a href="/">Volver</a></p>
+<!--    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script>
+        async function Connect(){
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts",[]);
+            const address = await provider.getSigner().getAddress();
+            document.getElementById("addr").value = address;
+            document.getElementById("form").submit();
+        }
+    </script>-->
+</body>
+</html>

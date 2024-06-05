@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Blockchain FP Euskadi</title>
+</head>
+<body>
+    <h1>Valor escrito en el contrato</h1>
+    {% if error %}
+    <p>Ha habido un error.</p>
+    {% else %}
+    <p>El valor se ha escrito correctamente desde la cuenta {{ addr }}.</p>
+    {% endif %}
+    <p><a href="/">Volver</a></p>
+</body>
+</html>
