@@ -4,10 +4,7 @@ from web3 import Web3
 app = Flask(__name__, template_folder='www', static_url_path='/static')
 
 #Address del contrato con el que vamos a interactuar
-contract_addr = "0x4F0cB0F8D0fB1b5b82C538CDE156a19114eaaF8d"
-
-#Address del creador del contrato
-#owner_addr = "0xBD00E17Ca3fef8bac65bAc4f00036b64c29BCD26"
+contract_addr = "XXXXX" #CAMBIA ESTE VALOR POR EL ADDRESS DE TU CONTRATO
 
 #Cadena de conexión con Ganache
 provider = "http://127.0.0.1:7545"
