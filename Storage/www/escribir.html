@@ -4,7 +4,13 @@
 
 {% block head %}
 {{ super() }}
-<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+
+<script type="text/javascript"
+        integrity="sha384-Htz1SE4Sl5aitpvFgr2j0sfsGUIuSXI6t8hEyrlQ93zflEF3a29bH2AvkUROUw7J"
+        crossorigin="anonymous"
+        src="https://cdn-cors.ethers.io/lib/ethers-5.7.2.umd.min.js">
+</script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.ethereum !== 'undefined') {
