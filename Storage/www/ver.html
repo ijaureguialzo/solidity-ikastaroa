@@ -3,10 +3,14 @@
 {% block title %}Ver el valor{% endblock %}
 
 {% block content %}
-<h1>Valor almacenado en el contrato</h1>
-<ul>
-    <li>Dirección del contrato: <strong>{{ contract_addr }}</strong></li>
-    <li>Valor almacenado: <strong>{{ num }}</strong></li>
+<h1 class="mb-5">Valor almacenado en el contrato</h1>
+<ul class="list-group">
+    <li class="list-group-item">
+        Dirección del contrato: <strong>{{ contract_addr }}</strong>
+    </li>
+    <li class="list-group-item">
+        Valor almacenado: <strong>{{ num }}</strong>
+    </li>
 </ul>
-<p><a href="/">Volver</a></p>
+<a class="btn btn-secondary mt-5" href="/">Volver</a>
 {% endblock %}

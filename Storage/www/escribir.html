@@ -32,14 +32,24 @@
 {% endblock %}
 
 {% block content %}
-<h1>Escribir un valor en el contrato</h1>
-<p>Para escribir un valor en el contrato en la llamada a la función Store, le tenemos que decir desde que address se ha
-    hecho la llamada ya que esta información se guarda en el bloque para así poder auditar quién hace cada cambio en el
-    contrato.</p>
+<h1 class="mb-5">Escribir un valor en el contrato</h1>
+
+<!-- Para escribir un valor en el contrato en la llamada a la función Store, le tenemos que decir desde que address se ha
+     hecho la llamada ya que esta información se guarda en el bloque para así poder auditar quién hace cada cambio en el
+     contrato. -->
+
 <form id="formu" action="" method="post">
     <input type="hidden" id="addr" name="addr" value=""/>
-    Número a escribir (0-100): <input type="number" name="num" min="0" max="100">
-    <button type="submit">Enviar</button>
+    <div class="card col-4 p-3">
+        <div class="mb-3">
+            <label class="form-label" for="num">Número a escribir (0-100)</label>
+            <input class="form-control" type="number" id="num" name="num" min="0" max="100" value="0" required/>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+    </div>
 </form>
-<p><a href="/">Volver</a></p>
+
+<a class="btn btn-secondary mt-5" href="/">Volver</a>
 {% endblock %}

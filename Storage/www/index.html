@@ -3,9 +3,15 @@
 {% block title %}dApp{% endblock %}
 
 {% block content %}
-<h1>Aplicación web para escribir en el contratro Storage</h1>
-<ul>
-    <li><a href="/ver">Ver el valor almacenado en el contrato</a></li>
-    <li><a href="/escribir">Almacenar nuevo valor en el contrato</a></li>
+<h1 class="mb-5">Aplicación web para escribir en el contrato Storage</h1>
+<ul class="list-group col-6 mx-auto">
+    <li class="list-group-item text-center">
+        <a class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
+           href="/ver">Ver el valor almacenado en el contrato</a>
+    </li>
+    <li class="list-group-item text-center">
+        <a class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
+           href="/escribir">Almacenar nuevo valor en el contrato</a>
+    </li>
 </ul>
 {% endblock %}

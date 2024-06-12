@@ -3,11 +3,11 @@
 {% block title %}Valor escrito{% endblock %}
 
 {% block content %}
-<h1>Valor escrito en el contrato</h1>
+<h1 class="mb-5">Valor escrito en el contrato</h1>
 {% if error %}
-<p>Ha habido un error.</p>
+<p class="alert alert-danger">Ha habido un error.</p>
 {% else %}
-<p>El valor se ha escrito correctamente desde la cuenta {{ addr }}.</p>
+<p class="alert alert-success">El valor se ha escrito correctamente desde la cuenta {{ addr }}.</p>
 {% endif %}
-<p><a href="/">Volver</a></p>
+<a class="btn btn-secondary mt-5" href="/">Volver</a>
 {% endblock %}
