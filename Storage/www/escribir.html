@@ -16,14 +16,14 @@
         if (typeof window.ethereum !== 'undefined') {
             console.log('MetaMask is installed!');
 
-            document.getElementById('formu').addEventListener('submit', async function (event) {
+            document.getElementById('formulario').addEventListener('submit', async function (event) {
                 event.preventDefault(); // Evita que el formulario se envíe inmediatamente
 
                 const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
                 if (accounts.length > 0) {
                     console.log('Connected account:', accounts[0]);
                     // Aquí puedes realizar acciones adicionales con la cuenta seleccionada
-                    document.getElementById("addr").value = accounts[0];
+                    document.getElementById("direccion_origen").value = accounts[0];
                     // Ahora puedes enviar el formulario
                     event.target.submit();
                 } else {
@@ -44,12 +44,18 @@
      hecho la llamada ya que esta información se guarda en el bloque para así poder auditar quién hace cada cambio en el
      contrato. -->
 
-<form id="formu" action="" method="post">
-    <input type="hidden" id="addr" name="addr" value=""/>
-    <div class="card col-4 p-3">
+<form id="formulario" action="" method="post">
+    <input type="hidden" id="direccion_origen" name="direccion_origen" value=""/>
+    <div class="card col-6 p-3">
         <div class="mb-3">
-            <label class="form-label" for="num">Número a escribir (0-100)</label>
-            <input class="form-control" type="number" id="num" name="num" min="0" max="100" value="0" required/>
+            <label class="form-label" for="direccion_destino">Dirección en la que escribir</label>
+            <input class="form-control" type="text" id="direccion_destino" name="direccion_destino"
+                   placeholder="0xB6EB7551156c64FD2aB0128d14e6ff12E4c9d632"
+                   minlength="42" maxlength="42" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="numero">Número a escribir (0-100)</label>
+            <input class="form-control" type="number" id="numero" name="numero" min="0" max="100" value="0" required/>
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Enviar</button>

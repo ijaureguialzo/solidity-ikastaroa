@@ -45,14 +45,12 @@ def get_escribir():
 
 @app.post("/escribir/")
 def post_escribir():
-    # Recogemos el address que envía el número al contrato y la convertimos al formato checksum necesario para interactuar con la blockchain
-    addr = request.form.get('addr')
-    addr = Web3.to_checksum_address(addr)
-    # Recogemos el número a guardar en la blockchain y lo pasamos a entero
-    num = int(request.form.get('num'))
-    # LA variable error nos va a permitir saber si hemos recibido el address correctamente o no.
+    direccion_origen = Web3.to_checksum_address(request.form.get('direccion_origen'))
+    direccion_destino = Web3.to_checksum_address(request.form.get('direccion_destino'))
+    numero = int(request.form.get('numero'))
+
     error = True
-    if addr:
+    if direccion_origen:
         error = False
         # Establecemos la conexión con la Blockchain
         web3 = Web3(Web3.HTTPProvider(provider))
@@ -63,9 +61,10 @@ def post_escribir():
             # Llamamos a la funcion store del contrato
             # En este caso como vamos a cambiar el estado del contrato tenemos que ejecutar la función transact
             # y pasarle el address que hace la llamada a la función
-            contract.functions.store(num).transact({"from": addr})
+            contract.functions.store(direccion_destino, numero).transact({"from": direccion_origen})
 
-    return render_template("num_escrito.html", error=error, addr=addr)
+    return render_template("num_escrito.html", error=error, direccion_origen=direccion_origen,
+                           direccion_destino=direccion_destino, numero=numero)
 
 
 if __name__ == "__main__":
