@@ -4,6 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     command: python3 server.py
+    environment:
+      - CONTRACT_ADDR=${CONTRACT_ADDR}
+      - PROVIDER=${PROVIDER}
     hostname: flask
     ports:
       - "5000:5000"

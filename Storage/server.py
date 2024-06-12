@@ -1,13 +1,15 @@
+import os
+
 from flask import Flask, render_template, request
 from web3 import Web3
 
 app = Flask(__name__, template_folder='www', static_url_path='/static')
 
 # Address del contrato con el que vamos a interactuar
-contract_addr = "XXXXX"  # CAMBIA ESTE VALOR POR EL ADDRESS DE TU CONTRATO
+contract_addr = os.environ.get("CONTRACT_ADDR")
 
 # Cadena de conexión con Ganache
-provider = "http://127.0.0.1:7545"  # REVISA QUE EL PUERTO DE CONEXIÓN A GANACHE ES CORRECTO
+provider = os.environ.get("PROVIDER")
 
 # Guardamos en una variable abi, el abi del contrato
 with open("static/abi/Storage.abi", "r") as f:
