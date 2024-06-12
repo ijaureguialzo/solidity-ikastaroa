@@ -7,6 +7,7 @@ help: _header
 	@echo build
 	@echo start / stop / restart
 	@echo workspace
+	@echo logs
 	@echo clean
 	@echo ----------------------
 
@@ -18,7 +19,7 @@ _header:
 _urls:
 	${info }
 	@echo -----------------------------
-	@echo [Flask] http://localhost:8000
+	@echo [Flask] http://localhost:5000
 	@echo -----------------------------
 
 build:
@@ -36,6 +37,9 @@ restart: stop start
 
 workspace:
 	@docker compose exec flask /bin/bash
+
+logs:
+	@docker compose logs flask
 
 clean:
 	@docker compose down -v --remove-orphans
