@@ -4,14 +4,14 @@
     <title>Blockchain FP Euskadi</title>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             if (typeof window.ethereum !== 'undefined') {
                 console.log('MetaMask is installed!');
 
-                document.getElementById('formu').addEventListener('submit', async function(event) {
+                document.getElementById('formu').addEventListener('submit', async function (event) {
                     event.preventDefault(); // Evita que el formulario se envíe inmediatamente
-                    
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+                    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
                     if (accounts.length > 0) {
                         console.log('Connected account:', accounts[0]);
                         // Aquí puedes realizar acciones adicionales con la cuenta seleccionada
@@ -29,13 +29,15 @@
     </script>
 </head>
 <body>
-    <h1>Escribir un valor en el contrato</h1>
-    <p>Para escribir un valor en el contrato en la llamada a la función Store, le tenemos que decir desde que address se ha hecho la llamada ya que esta información se guarda en el bloque para así poder auditar quién hace cada cambio en el contrato.</p>
-    <form id="formu" action="" method="post">
-       <input type="hidden" id="addr" name="addr" value="" />
-       Número a escribir (0-100): <input type="number" name="num" min="0" max="100">
-       <button type="submit">Enviar</button>
-    </form>
-    <p><a href="/">Volver</a></p>
+<h1>Escribir un valor en el contrato</h1>
+<p>Para escribir un valor en el contrato en la llamada a la función Store, le tenemos que decir desde que address se ha
+    hecho la llamada ya que esta información se guarda en el bloque para así poder auditar quién hace cada cambio en el
+    contrato.</p>
+<form id="formu" action="" method="post">
+    <input type="hidden" id="addr" name="addr" value=""/>
+    Número a escribir (0-100): <input type="number" name="num" min="0" max="100">
+    <button type="submit">Enviar</button>
+</form>
+<p><a href="/">Volver</a></p>
 </body>
 </html>
