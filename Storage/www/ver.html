@@ -1,15 +1,16 @@
 {% extends "layout.html" %}
 
-{% block title %}Ver el valor{% endblock %}
+{% block title %}Saldo de {{ direccion }}{% endblock %}
 
 {% block content %}
-<h1 class="mb-5">Valor almacenado en el contrato</h1>
+<h1>Saldo de una dirección</h1>
+<h2 class="mb-5 text-primary fs-5">{{ direccion }}</h2>
 <ul class="list-group">
     <li class="list-group-item">
         Dirección del contrato: <strong>{{ contract_addr }}</strong>
     </li>
     <li class="list-group-item">
-        Valor almacenado: <strong>{{ num }}</strong>
+        Valor almacenado: <strong>{{ saldo }}</strong>
     </li>
 </ul>
 <a class="btn btn-secondary mt-5" href="/">Volver</a>

@@ -12,7 +12,7 @@ contract_addr = os.environ.get("CONTRACT_ADDR")
 provider = os.environ.get("PROVIDER")
 
 # Guardamos en una variable abi, el abi del contrato
-with open("static/abi/Storage.abi", "r") as f:
+with open("static/abi/AddressStorage.abi", "r") as f:
     abi = f.read()
 
 
@@ -22,22 +22,20 @@ def hello_world():
     return render_template("index.html")
 
 
-# Ruta para ver el valor almacenado en el
-@app.route("/ver/")
-def ver():
-    # Conexión con Ganache
+@app.get("/ver/")
+def get_ver():
+    return render_template("formulario.html")
+
+
+@app.post("/ver/")
+def post_ver():
     web3 = Web3(Web3.HTTPProvider(provider))
     if web3.is_connected():
-        # Nos conectamos con el contrato utilizando su abi y address
         contract = web3.eth.contract(abi=abi, address=contract_addr)
-
-        # Llamamos a la funcion retrieve del contrato
-        # En este caso es una función que solo recibe un valor del contrato sin cambiar su estado
-        # y por eso llamamos a la función call
-        num = contract.functions.retrieve().call()
-
-    # Lanzamos la página web en la que vamos a mostrar el resultado y le pasamos el resultado de la función retrieve
-    return render_template("ver.html", num=num, contract_addr=contract_addr)
+        direccion = request.form.get('direccion')
+        direccion = Web3.to_checksum_address(direccion)
+        saldo = contract.functions.retrieve(direccion).call()
+    return render_template("ver.html", saldo=saldo, contract_addr=contract_addr, direccion=direccion)
 
 
 @app.get('/escribir/')
